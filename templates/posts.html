@@ -38,9 +38,9 @@
                 <div class="name"> {{post.name}}</div>
                 <div class="date_time">{{post.created_at }}</div>
                 <p>{{post.body}}</p>
-                {{if post.image.url}}
+                {{% if post.image.url %}}
                 <img class="Image" src="{{post.image.url}}" style="width: 100%;" />
-                {{}}
+                {{% endif %}}
                 <a href="/delete/{{post_id}}/"></a>
             </div>
             <div class="like_count">
