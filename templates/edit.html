@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}{% load static %}
+<section class="section">
+  <section class="content">
+    <div class="header">
+      <img src="/static/img/twitter.png" class="logo" />
+      <a href="#">Edit</a>
+    </div>
+    <section class="post_form">
+      <form
+        action="/edit/{{posts.id}}/"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value="{{posts.name}}"
+          required
+        /><br />
+        <textarea name="body" placeholder="{{posts.body}}" required></textarea>
+        <br />
+        
+        {% if posts.image.url %}
+        <img class="Image" src="{{posts.image.url}}" />
+        <!-- style="width: 370px; height: 370px" -->
+
+        {% endif %}
+        <br />
+        <div class="tweet">
+            <input class="img_upload" type="file" name="image" />
+          <a href="{% url 'index' %}" id="btn_grey" type="submit">Cancel</a>
+          <input id="btn_blue" type="submit" value="Update" />
+        </div>
+      </form>
+    </section>
+  </section>
+</section>
+{% endblock%}
